@@ -1,2 +1,2 @@
 # arepaslabuena.github.io
-Pagina para el pueso de Arepas la Buena
+Pagina para el puesto de Arepas la Buena
