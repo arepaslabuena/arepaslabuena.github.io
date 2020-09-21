@@ -15,7 +15,8 @@ $('#contactForm').on('submit',function(e){
             alert('Gracias por contactarte con nosotros!.');
             return true;
         } else {
-            alert("Algo salio mal. por favor intentalo de nuevo.");
+            alert("Algo salio mal. Por favor intentalo de nuevo.");
+            console.log(response.error);
         }
 
     }).fail(function (error) {
