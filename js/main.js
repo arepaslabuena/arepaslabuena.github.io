@@ -3,11 +3,23 @@ $('#contactForm').on('submit',function(e){
 
     e.preventDefault();
 
+    console.log({
+        name: $("#name").val(),
+        email: $("#email").val(),
+        subject: $("#subject").val(),
+        message: $("#message").val(),
+    });
+
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycby-z50hjbv5XK0NA6O0J8v1sq9X7Uy-PM_XjIQF3xNEDhEgh4Nj/exec",
         method: "POST",
         dataType: "json",
-        data: $("#contactForm").serialize(),
+        data: {
+            name: $("#name").val(),
+            email: $("#email").val(),
+            subject: $("#subject").val(),
+            message: $("#message").val(),
+        },
     }).done(function (response) {
         
         if(response.result == "success") {
