@@ -1,25 +1,26 @@
-$('#contactForm').on('submit',function(e){
-    //optional validation code here
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzk3GS9fGOhFCbxIWfwYRc7jRQ18msqE2dlcE4o0zo_8Wa5-Fje/exec';
+
+const form = document.forms['submit-to-google-sheet'];
+
+form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, {
+                        method: 'POST',
+                        body: new FormData(form)
+                    })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+})
+
+/* $('#contactForm').on('submit',function(e){
 
     e.preventDefault();
-
-    console.log({
-        name: $("#name").val(),
-        email: $("#email").val(),
-        subject: $("#subject").val(),
-        message: $("#message").val(),
-    });
 
     $.ajax({
         url: "https://script.google.com/macros/s/AKfycby-z50hjbv5XK0NA6O0J8v1sq9X7Uy-PM_XjIQF3xNEDhEgh4Nj/exec",
         method: "POST",
         dataType: "json",
-        data: {
-            name: $("#name").val(),
-            email: $("#email").val(),
-            subject: $("#subject").val(),
-            message: $("#message").val(),
-        },
+        data: $('#contactForm').serialize(),
     }).done(function (response) {
         
         if(response.result == "success") {
@@ -35,4 +36,4 @@ $('#contactForm').on('submit',function(e){
         console.log(error);
     });
     
-});
+}); */
